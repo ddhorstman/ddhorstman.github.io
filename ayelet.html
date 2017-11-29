@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <title>Processing Website Test</title>
+  </head>
+  <body>
+<h1>Processing Sketch from Ayelet Kornblau</h1>
+      <p>This is a pac-man clone</p>
+<script src="processing-1.4.8.js"></script>
+ <script type="text/processing" data-processing-target="processing-canvas">
+
+
+int x = 40;// x coordinate of pac man
+int y = 40;//y coordinate of pacman
+int p =0;// number of points(food eaten) won
+int s = 5;// size of food
+int a = 720;//x coordinate of where eaten dots are placec
+int b =500;// y coordinate of where eaten dots are put
+int h = 15;// size of monster one//never use it again
+int l = 5;  // lives
+int gameState = 0;
+
+int mrad = 30;//width of monster one
+float xpos, ypos; //where my monster starts
+float mxpos, mypos;// the monster after dot 2
+float xspeed = 2.8;
+float yspeed = 2.8;
+int xdirection =1;//
+int ydirection = 1;//
+
+int one =40; 
+int yone = 80;
+int two = 160; 
+int ytwo = 20;
+int three =340; 
+int ythree = 60;
+int four = 480; 
+int yfour = 20;
+int five = 660; 
+int yfive = 60;
+int six = 800; 
+int ysix = 20;
+int seven = 120; 
+int yseven = 200;
+int eight = 400; 
+int yeight = 160;
+int nine  = 720; 
+int ynine = 200;
+int ten = 140; 
+int yten = 320;
+int eleven = 220; 
+int yeleven = 380;
+int twelve = 380; 
+int ytwelve = 320;
+int thirteen = 500; 
+int ythirteen = 380;
+int fourteen = 660; 
+int yfourteen = 380;
+int fiveteen = 840; 
+int yfiveteen = 260;
+int sixteen = 300; 
+int ysixteen = 440;
+int seventeen = 500; 
+int yseventeen = 500;
+int eightteen = 40; 
+int yeightteen = 600;
+int nineteen = 640; 
+int ynineteen = 540;
+int twenty = 240; 
+int ytwenty = 660;
+int twentyone = 840; 
+int ytwentyone = 660;
+
+int mone =40; 
+int ymone = 200;
+int mtwo =60; 
+int ymtwo= 200;
+
+
+void setup() {
+  size(920, 680);
+  noStroke();
+  frameRate(30);
+  ellipseMode(RADIUS);
+
+  xpos= width/2;
+  ypos = height/2;//starting point of monster one
+}
+void draw() {
+  if (l==0) {
+    gameState=3;
+  }
+  if (gameState==3);
+  {
+    background(0);
+    textSize(50);
+    text("You are ugly and you lost, go die in a hole!!!", 10, 500);
+  }
+
+  if (gameState==2) {
+    background(0);
+    textSize(50);
+    text("You won!", 500, 500);
+  }
+  if (p==21) {
+    gameState=2;
+  }
+
+  if (gameState==0) {
+    background(0);
+    textSize(50);
+    text("Play", 500, 500);
+  }
+  if (gameState==1) {
+    background(0);
+
+    xpos = xpos + (xspeed * xdirection);
+    ypos = ypos  + (yspeed * ydirection);//id it out of boundries?
+    if (xpos >width-mrad || xpos<mrad) {
+      xdirection= xdirection*-1;
+    }
+
+    if (ypos > height - mrad ||ypos<mrad) {
+      ydirection= ydirection*-1;
+    }
+
+    fill(100, 150, 250);
+    ellipse(xpos, ypos, mrad, mrad);
+    fill(150, 50, 100);
+    ellipse(xpos, ypos, h+21, h+21);
+    fill(0, 0, 0);
+    ellipse(xpos, ypos-24, h-1.5, h-1.5);
+    ellipse(xpos+15, ypos+21, h+3, h+3);
+    ellipse(xpos-15, ypos+21, h+3, h+3);
+    ellipse(xpos, ypos+42, h-5, h-5);
+    fill(150, 0, 100);
+    ellipse(xpos, ypos, h, h);
+    fill(250, 250, 200);
+    ellipse(xpos, ypos-3, h-7.5, h-7.5);
+    fill(200, 0, 0);
+    ellipse(xpos, ypos-3, h-10, h-10);
+    fill(0, 0, 0);
+    ellipse(xpos, ypos-2, h-12.5, h-12.5);
+    stroke(7);
+    fill(250, 70, 0);
+    line(xpos-6, ypos+9, xpos+6, ypos+9);
+    noStroke();
+    fill(200, 0, 0);
+    triangle(xpos-7, ypos+9, xpos-3, ypos+9, xpos-6, ypos+18);
+    triangle(xpos+7, ypos+9, xpos+3, ypos+9, xpos+6, ypos+18);
+    noStroke();
+
+    if (abs(x-xpos)<30 && abs(y-ypos)<30) {
+      l=l-1;
+      x=40;
+      y=40;
+    }//does not let mounster touch pacman without losing life
+
+
+    fill(20, 120, 80);//score counter
+    textSize(30);
+    text(p, 200, 200);
+    text("Points", 250, 200);
+    text(l, 200, 235);
+    text("Lives Left", 250, 235);
+
+
+
+
+    fill(700, 0, 400);
+    ellipse(one, yone, s, s);
+    if (abs(x-one)<20 && abs(y-yone)<20) {    
+      one=a;
+      yone=b;
+      p=p+1;
+    }//dot 1
+
+    ellipse(two, ytwo, s, s);
+    if (abs(x-two)<20 && abs (y-ytwo)<20) {
+      two=a;
+      ytwo=b;
+      p=p+1;
+    }//dot 2
+
+    ellipse( three, ythree, s, s);
+    if (three ==x && ythree ==y) {
+      three=a;
+      ythree=b;
+      p=p+1;
+    }//dot 3
+
+    ellipse(four, yfour, s, s);
+    if (four ==x &&  yfour ==y) {
+      four =a;
+      yfour=b;
+      p=p+1;
+    }//dot 4
+
+    ellipse( five, yfive, s, s);
+    if (five ==x &&  yfive ==y) {
+      five=a;
+      yfive  =b;
+      p=p+1;
+    }//dot 5
+
+
+    ellipse(six, ysix, s, s);
+    if ( six==x &&  ysix ==y) {
+      six=a;
+      ysix=b;
+      p=p+1;
+    }//dot 6
+
+    ellipse( seven, yseven, s, s);
+    if (seven ==x && yseven  ==y) {
+      seven  =a;
+      yseven =b;
+      p=p+1;
+    }//dot 7
+
+    ellipse( eight, yeight, s, s);
+    if ( eight==x &&   yeight==y) {
+      eight  =a;
+      yeight  =b;
+      p=p+1;
+    }//dot 8
+
+    ellipse(nine, ynine, s, s);
+    if (nine ==x && ynine  ==y) {
+      nine  =a;
+      ynine =b;
+      p=p+1;
+    }//dot 9
+
+    ellipse( ten, yten, s, s);
+    if (ten ==x &&  yten ==y) {
+      ten =a;
+      yten=b;
+      p=p+1;
+    }//dot ten
+
+    ellipse( eleven, yeleven, s, s);
+    if (eleven ==x &&  yeleven ==y) {
+      eleven=a;
+      yeleven =b;
+      p=p+1;
+    }//dot eleven
+
+    ellipse(twelve, ytwelve, s, s);
+    if ( twelve==x &&  ytwelve ==y) {
+      twelve  =a;
+      ytwelve =b;
+      p=p+1;
+    }//dot 12
+
+    ellipse( thirteen, ythirteen, s, s);
+    if (thirteen ==x &&   ythirteen==y) {
+      thirteen   =a;
+      ythirteen =b;
+      p=p+1;
+    }//dot 13
+
+    ellipse( fourteen, yfourteen, s, s);
+    if (fourteen ==x && yfourteen  ==y) {
+      fourteen =a;
+      yfourteen  =b;
+      p=p+1;
+    }//dot 14
+
+    ellipse( fiveteen, yfiveteen, s, s);
+    if (fiveteen ==x && yfiveteen  ==y) {
+      fiveteen =a;
+      yfiveteen =b;
+      p=p+1;
+    }//dot 15
+
+    ellipse(sixteen, ysixteen, s, s);
+    if (sixteen ==x && ysixteen  ==y) {
+      sixteen   =a;
+      ysixteen =b;
+      p=p+1;
+    }//dot 16
+
+    ellipse(seventeen, yseventeen, s, s);
+    if ( seventeen==x &&  yseventeen ==y) {
+      seventeen   =a;
+      yseventeen=b;
+      p=p+1;
+    }//dot
+
+    ellipse( eightteen, yeightteen, s, s);
+    if (eightteen ==x && yeightteen  ==y) {
+      eightteen   =a;
+      yeightteen  =b;
+      p=p+1;
+    }//dot 18
+
+    ellipse(nineteen, ynineteen, s, s);
+    if ( nineteen==x && ynineteen  ==y) {
+      nineteen  =a;
+      ynineteen  =b;
+      p=p+1;
+    }//dot 19
+
+    ellipse( twenty, ytwenty, s, s);
+    if ( twenty==x && ytwenty  ==y) {
+      twenty =a;
+      ytwenty =b;
+      p=p+1;
+    }//dot 20
+
+    ellipse( twentyone, ytwentyone, s, s);
+    if (twentyone ==x &&ytwentyone   ==y) {
+      twentyone =a;
+      ytwentyone  =b;
+      p=p+1;
+    }//dot
+
+
+    //shapes of maze
+    fill(20, 120, 0);
+    if (x+15> 920) {
+      x=40;
+      y=40;
+    }
+    if (x-15<0) {
+      x=40;
+      y=40;
+    }
+    if (y+15>680)
+    { 
+      x=40;
+      y=40;
+    }
+    if (y-15<0) {
+      x=40;
+      y=40;
+    }// make the pacman not be able to leave maze
+
+
+    quad(0, 240, 40, 240, 40, 400, 0, 400);
+    if (x+15>0  &&x-15< 40 &&y+15>240  &&y-15<400  ) {
+      x=40;
+      y=40;
+    }
+    quad(40, 240, 80, 240, 80, 280, 40, 280);
+    if (x+15>40  &&x-15< 80 &&y+15>240  &&y-15<280  ) {
+      x=40;
+      y=40;
+    }
+    quad(80, 240, 120, 240, 120, 360, 80, 360);
+    if (x+15> 80 &&x-15<120  &&y+15>240  &&y-15<360  ) {
+      x=40;
+      y=40;
+    }
+    quad(40, 320, 80, 320, 80, 360, 40, 360);
+    if (x+15>40  &&x-15< 80 &&y+15>320  &&y-15< 360 ) {
+      x=40;
+      y=40;
+    }//p
+
+    quad(160, 240, 200, 240, 200, 400, 160, 400);
+    if (x+15> 160 &&x-15<200  &&y+15>240  &&y-15<400  ) {
+      x=40;
+      y=40;
+    }
+    quad(200, 240, 240, 240, 240, 280, 200, 280);
+    if (x+15> 200 &&x-15< 240 &&y+15>240  &&y-15< 280 ) {
+      x=40;
+      y=40;
+    }
+    quad(240, 240, 280, 240, 280, 400, 240, 400);
+    if (x+15> 240 &&x-15<280  &&y+15>240  &&y-15<  400) {
+      x=40;
+      y=40;
+    }
+    quad(200, 320, 240, 320, 240, 360, 200, 360);
+    if (x+15> 200 &&x-15<240  &&y+15> 320 &&y-15< 360 ) {
+      x=40;
+      y=40;
+    }//a
+
+    quad(320, 240, 360, 240, 360, 400, 320, 400);
+    if (x+15> 320 &&x-15<360  &&y+15> 240 &&y-15<400  ) {
+      x=40;
+      y=40;
+    }
+    quad(360, 240, 400, 240, 400, 280, 360, 280);
+    if (x+15>360  &&x-15< 400 &&y+15>240  &&y-15<280  ) {
+      x=40;
+      y=40;
+    }
+    quad(360, 360, 400, 360, 400, 400, 360, 400);
+    if (x+15>360 &&x-15< 400 &&y+15> 360 &&y-15< 400 ) {
+      x=40;
+      y=40;
+    }//c
+
+    quad(480, 260, 493, 260, 493, 300, 480, 300);
+    if (x+15>480  &&x-15<493  &&y+15>260  &&y-15<300  ) {
+      x=40;
+      y=40;
+    }
+    quad(493, 280, 493, 320, 507, 320, 507, 280);
+    if (x+15>493  &&x-15<507  &&y+15> 280 &&y-15<320  ) {
+      x=40;
+      y=40;
+    }
+    quad(507, 260, 520, 260, 520, 300, 507, 300);
+    if (x+15>507  &&x-15<520  &&y+15> 260 &&y-15< 300 ) {
+      x=40;
+      y=40;
+    }
+    quad(440, 240, 480, 240, 480, 400, 440, 400);
+    if (x+15> 440 &&x-15<480  &&y+15>240  &&y-15<400  ) {
+      x=40;
+      y=40;
+    }
+    quad(520, 240, 560, 240, 560, 400, 520, 400);
+    if (x+15>520  &&x-15< 560 &&y+15> 240 &&y-15<400  ) {
+      x=40;
+      y=40;
+    }//m
+
+    quad(600, 240, 640, 240, 640, 400, 600, 400);
+    if (x+15>600  &&x-15< 640 &&y+15> 240 &&y-15<400  ) {
+      x=40;
+      y=40;
+    }
+    quad(640, 240, 680, 240, 680, 280, 640, 280);
+    if (x+15> 640 &&x-15< 680 &&y+15>  240&&y-15<280  ) {
+      x=40;
+      y=40;
+    }
+    quad(640, 320, 680, 320, 680, 360, 640, 360);
+    if (x+15>649  &&x-15< 680 &&y+15>320  &&y-15< 360 ) {
+      x=40;
+      y=40;
+    }
+    quad(680, 240, 720, 240, 720, 400, 680, 400);
+    if (x+15> 680 &&x-15< 720 &&y+15> 240 &&y-15<400  ) {
+      x=40;
+      y=40;
+    }//a
+
+    quad(760, 240, 800, 240, 800, 400, 760, 400);
+    if (x+15> 760 &&x-15<600  &&y+15> 240 &&y-15< 400 ) {
+      x=40;
+      y=40;
+    }
+    quad(800, 280, 840, 280, 840, 320, 800, 320);
+    if (x+15> 800 &&x-15<840  &&y+15>280  &&y-15< 320 ) {
+      x=40;
+      y=40;
+    }
+    quad(840, 320, 880, 320, 880, 360, 840, 360);
+    if (x+15> 840 &&x-15< 880 &&y+15>320  &&y-15<360  ) {
+      x=40;
+      y=40;
+    }
+    quad(800, 260, 820, 260, 820, 280, 800, 280);
+    if (x+15>800  &&x-15< 820 &&y+15> 260 &&y-15< 280 ) {
+      x=40;
+      y=40;
+    }
+    quad(820, 300, 820, 340, 860, 340, 860, 300);
+    if (x+15>820  &&x-15<860  &&y+15>300  &&y-15<340  ) {
+      x=40;
+      y=40;
+    }
+    quad(860, 360, 880, 360, 880, 380, 860, 380);
+    if (x+15> 860 &&x-15<880  &&y+15>360  &&y-15< 380 ) {
+      x=40;
+      y=40;
+    }
+    quad(880, 240, 920, 240, 920, 400, 880, 400);//n
+
+
+    quad(80, 40, 80, 80, 320, 80, 320, 40);
+    if (x+15>80&&x-15<320&&y+15>40&&y-15<80) {
+      x=40;
+      y=40;
+    }
+    quad(360, 40, 360, 80, 600, 80, 600, 40);
+    if (x+15>360  &&x-15< 600  &&y+15>40 &&y-15<80  ) {
+      x=40;
+      y=40;
+    }
+    quad(920, 40, 920, 80, 720, 80, 720, 40);
+    if (x+15>720  &&x-15<920  &&y+15>40  &&y-15<80  ) {
+      x=40;
+      y=40;
+    }//lINE ONE
+
+
+    quad(160, 120, 160, 160, 360, 160, 360, 120);
+    if (x+15>160  &&x-15<360  &&y+15>120  &&y-15< 160 ) {
+      x=40;
+      y=40;
+    }
+    quad(440, 120, 440, 160, 560, 160, 560, 120);
+    if (x+15> 440 &&x-15<560  &&y+15>120  &&y-15< 160 ) {
+      x=40;
+      y=40;
+    }
+    quad(600, 120, 600, 160, 800, 160, 800, 120);
+    if (x+15> 600 &&x-15< 800 &&y+15>120  &&y-15<160  ) {
+      x=40;
+      y=40;
+    }//line 2
+
+    quad(560, 480, 560, 520, 880, 520, 880, 480);
+    if (x+15>560  &&x-15<880  &&y+15>480  &&y-15< 520 ) {
+      x=40;
+      y=40;
+    }//line 3
+
+    quad(40, 480, 40, 520, 440, 520, 440, 480);
+    if (x+15> 40 &&x-15<440  &&y+15>480  &&y-15<520  ) {
+      x=40;
+      y=40;
+    }//line 3
+
+    quad(120, 560, 120, 600, 560, 600, 560, 560);
+    if (x+15>120  &&x-15< 560 &&y+15>560  &&y-15< 600 ) {
+      x=40;
+      y=40;
+    }
+    quad(680, 560, 680, 600, 880, 600, 880, 560);
+    if (x+15> 680 &&x-15<880  &&y+15> 560 &&y-15< 600 ) {
+      x=40;
+      y=40;
+    }//line 4
+
+    quad(0, 640, 0, 680, 160, 680, 160, 640);
+    if (x+15> 0 &&x-15<160  &&y+15>640  &&y-15<680  ) {
+      x=40;
+      y=40;
+    }
+    quad(320, 640, 320, 680, 800, 680, 800, 640);
+    if (x+15> 320 &&x-15<800  &&y+15>640  &&y-15<680  ) {
+      x=40;
+      y=40;
+    }//line 5
+
+
+    fill(250, 250, 0);
+    ellipse(x, y, 15, 15);
+  }// the pacman
+}
+void keyPressed() {
+
+  if (keyCode==RIGHT) { 
+    x=x+10;
+  } else if (keyCode==LEFT) {
+    x=x-10;
+  } else if (keyCode==UP) {
+    y=y-10;
+  } else if (keyCode==DOWN) {
+    y=y+10;
+  }
+}
+
+void mousePressed() {
+  gameState=1;
+}
+
+
+
+</script>
+ <canvas id="processing-canvas"> </canvas>
+</body>
+</html>
