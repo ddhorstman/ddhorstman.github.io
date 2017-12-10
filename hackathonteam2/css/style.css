@@ -1,0 +1,27 @@
+html{
+  background-image: url(https://i.pinimg.com/736x/b0/4a/7c/b04a7cc9def033234fbb102e8b5ebc00--iphone--home-screen-home-screen-wallpaper-iphone.jpg);
+  backround-size: cover;
+}
+h1{
+  color: #064146;
+  font-family:arial;
+  text-align:CENTER;
+}
+h2{
+  color: #A10828;
+  font-family:arial;
+  text-align:CENTER;
+}
+p{
+  text-align:CENTER;
+  font-size: 20px;
+  color: #850924; 
+}
+ table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+   font-family:arial;
+  text-align:Left;
+}
+
+
