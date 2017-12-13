@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <title>Icy Spikes</title>
+  </head>
+  <body>
+<h1>Icy Spikes</h1>
+      <p>Written in Processing by Ilana Rouhani </p>
+<script src="processing-1.4.8.js"></script>
+ <script type="text/processing" data-processing-target="processing-canvas">
+
+
+
+float x = 100; //the ball x coordinate
+float Vx =6 ;//ball x velocity
+float y = 70; //the ball y coordinate
+float Vy = 12;// ball y velocity
+int gameState = 0;
+int colorSwap = 0;
+int lives = 10;
+int level = 1;
+int color1= 255; //created the next 7 colors as variables,
+int color2=0;// I was trying to accomplish something,
+int color3=4;//but found an easier route and left them as variables
+int color1r= 86;
+int color2r = 214;
+int color3r = 224;
+int color1rr = 201;
+int leftfirstcord[]={ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // first x of triangle
+int triangleExists[]={1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; //whether the triangle will pop up or not
+int leftseccord[]={0, 60, 420, 480, 240, 360, 540, 120, 180, 300};//first y of triangle
+int leftthirdcord[]={ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//second x of triangle
+int leftfourthcord[]={60, 120, 480, 540, 300, 420, 600, 180, 240, 360}; //+60, second y of triangle
+int leftfifthcord[]={30, 30, 30, 30, 30, 30, 30, 30, 30, 30};//third point x of triangle
+int leftsixthcord[]={30, 90, 450, 510, 270, 390, 570, 150, 210, 330 };//+30 third point y of triangle
+int coord[]={0, 60, 420, 480, 240, 360, 540, 180, 240, 300};
+int rightfirstcord[]={800, 800, 800, 800, 800, 800, 800, 800, 800, 800};
+int righttriangleExists[]={1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+int rightseccord[]={0, 60, 120, 180, 240, 300, 360, 420, 480, 540};
+int rightthirdcord[]={800, 800, 800, 800, 800, 800, 800, 800, 800, 800};
+int rightfourthcord[]={60, 120, 180, 240, 300, 360, 420, 480, 540, 600};
+int rightfifthcord[]={770, 770, 770, 770, 770, 770, 770, 770, 770, 770};
+int rightsixthcord[]={30, 90, 150, 210, 270, 330, 390, 450, 510, 570};
+void setup() {
+  size(800, 600);
+  for (int i = 0; i<10; i++) { //triangles set up randomly
+	triangleExists[i]=(int) random(0, 2);
+	//println(triangleExists[i]);
+	int j =(int) random(0, 10);
+	triangleExists[j]= 0; //cannot have all spikes on one side of the screen
+  }
+  for (int i = 0; i<10; i++) {
+	righttriangleExists[i]=(int) random(0, 2);
+	//println(triangleExists[i]);
+	int j =(int) random(0, 10);
+	triangleExists[j]= 0;
+  }
+}
+void draw () {
+  background(#FC5468); //the homepage of the game, where you start
+  if (gameState==0) {
+	fill(5, 2, 25);
+	rect(300, 220, 200, 60); //click to start box
+	rect(300, 300, 200, 60); // instructions box
+  }
+  if (gameState==0) {
+	if (colorSwap<5) { //color in text and spikes in beginning
+  	fill(color1, color2, color3);
+  	colorSwap++;
+	} else if (colorSwap<10) {
+  	fill(0, 0, 255);
+  	colorSwap++;
+	} else if (colorSwap<15) {
+  	fill(5, 255, 0);
+  	colorSwap++;
+	} else {
+  	colorSwap=0;
+	}
+
+	textSize(100);
+	text("ICY SPIKES", 157, 170);
+	textSize(21);
+	text("Click here to start!", 307, 253);
+	textSize(21);
+	text("Instructions", 340, 335);
+  }
+  if (gameState==1) {//color in ball and spikes when youre playing the game
+	if (colorSwap<1) {
+  	fill(color1rr, 244, 252);
+  	colorSwap++;
+	} else if (colorSwap<2) {
+  	fill(color1rr, 244, 252);
+  	colorSwap++;
+	} else if (colorSwap<700) {
+  	fill(color1r, color2r, color3r);
+  	colorSwap++;
+	} else if (colorSwap<1400) {
+  	fill(93, 160, 255);
+  	colorSwap++;
+	} else if (colorSwap<2000) {
+  	fill(65, 119, 178);
+  	colorSwap++;
+	} else if (colorSwap<2400) {
+  	fill(3, 10, 30);
+  	colorSwap++;
+	} else {
+  	colorSwap=0; //after black, set the colors again
+	}
+	textSize(25);
+	text("Lives: "+lives+"", 75, 150);
+	text("Level: "+level+"", 75, 100);
+	ellipse(x, y, 30, 30); //draw an ellipse at x and y
+	x = x + Vx; //ball speed and movement
+	if (x>=width) {
+  	for (int i = 0; i<10; i++) {
+    	triangleExists[i]=(int) random(0, 2); //declare a random number from 0 to 2
+    	// println(triangleExists[i]);
+    	//   score = score + 3;
+  	}
+  	Vx= - (Vx +.15); //ball increases speed
+	}
+	if (x<= 0) {
+  	for (int i = 0; i<10; i++) {
+    	righttriangleExists[i]=(int) random(0, 2); //declare a random number from 0 to 2
+    	//  println(triangleExists[i]);
+    	//   score = score + 3;
+  	}
+  	Vx = -(Vx -.15); //ball increases speed
+	}
+	y = y + 6; //how high the ball jumps
+  }
+  if (keyPressed==true&&key==' ') { //using the spacebar
+	y= y - 19; //how fast the ball goes down
+	if (y<=0)
+  	y = 0;
+  }
+  if (y>=600)
+	y = 599;
+
+  for (int i = 0; i<10; i++) { //using my arrays
+	if (triangleExists[i]==1) //if it is one, the triangle will show
+  	triangle(0, leftseccord[i], 0, //declaring the triangles
+    	leftseccord[i]+60, 30, leftsixthcord[i]);
+  }
+  for (int i = 0; i<10; i++) {//using my arrays for right triangles
+	if (righttriangleExists[i]==1)//with one the triangles will show
+  	triangle(800, rightseccord[i], 800, //declaring the right triangles
+    	rightseccord[i]+60, 770, rightsixthcord[i]);
+  }
+  if (gameState==1) { //level increase at each icy spike
+	if (colorSwap<1)
+  	level = level + 1;
+  }
+
+  for (int i = 0; i<10; i++) { //if you hit the spike you lose a life
+	if (x<=0&&triangleExists[i]==1 && abs(leftfifthcord[i] - x) <= 60 && abs(leftsixthcord[i]- y) <= 60 && abs(leftthirdcord[i]-x) <= 60 && abs(leftfourthcord[i]-y) <= 60)
+  	lives=lives-1;
+  }
+
+  for (int i = 0; i<10; i++) {//hit right spikes you lose a life
+	if (x>=width&& righttriangleExists[i]==1 && abs(rightfifthcord[i] - x) <= 60 && abs(rightsixthcord[i]- y) <= 60 && abs(rightthirdcord[i]-x) <= 60 && abs(rightfourthcord[i]-y) <= 60)
+  	lives=lives-1;
+  }
+  if (gameState==1) {
+	if (colorSwap==2) //if you increase a level, you get one more life
+  	lives=lives+1;
+  }
+
+  if (lives<1) //if you run out of livs game over screen
+	gameState=2;
+  if (gameState==2) {
+	textSize(36);
+	text("Level: "+level+"", 330, 100);
+	fill(0, 0, 0);
+	textSize(100);
+	text("GAME OVER!", 100, 250);
+	textSize(26);
+	text("You have no more lives!", 240, 300);
+	noStroke();
+	rect(260, 370, 280, 100);
+	stroke(0, 0, 0);
+	if (gameState==2) {
+  	if (colorSwap<5) { //color in text and spikes
+    	fill(color1, color2, color3);
+    	colorSwap++;
+  	} else if (colorSwap<10) {
+    	fill(0, 0, 255);
+    	colorSwap++;
+  	} else if (colorSwap<15) {
+    	fill(5, 255, 0);
+    	colorSwap++;
+  	} else {
+    	colorSwap=0;
+  	}
+	}
+	text("PLAY AGAIN!", 316, 420);
+	if (mousePressed) { //box to restart game
+  	if (mouseX>=260 && mouseX<=540 && mouseY>370 &&mouseY<=470) {
+    	x = 80; //the ball x coordinate
+    	Vx =6 ;//ball x velocity
+    	y = 70; //the ball y coordinate
+    	Vy = 12;// ball y velocity
+    	colorSwap = 0;
+    	lives = 9;
+    	level = 1;
+    	color1= 255; //created the next 7 colors as variables,
+    	color2=0;// I was trying to accomplish something,
+    	color3=4;//but found an easier route and left them as variables
+    	color1r= 86;
+    	color2r = 214;
+    	color3r = 224;
+    	color1rr = 201;
+    	gameState=1;
+  	}
+	}
+  }
+
+  if (gameState==4) { //instructions screen
+	fill(0, 0, 0);
+	rect(80, 45, 180, 60);
+	textSize(25);
+	fill(255, 255, 255);
+	text("Back", 140, 83);
+	fill(34, 5, 89);
+	textSize(30);
+	text("Welcome to Icy Spikes! To play this game,", 100, 200);
+	text("click or hold down the space bar to control ", 100, 240);
+	text("the ball. You start with 10 lives and if  ", 100, 280);
+	text("you touch a spike, you may lose one or ", 100, 320);
+	text("two lives, depending on how many spikes", 100, 360);
+	text("you touch. Each time you reach the clear", 100, 400);
+	text("icy spikes, you move up and level and recieve", 100, 440);
+	text("one more life. Have fun!", 100, 480);
+  }
+}
+
+void mouseClicked() { //ita helped understand that I can place them here
+  if (gameState==0) { //play game
+	if (mouseX>=300 && mouseX<=500 && mouseY>220 &&mouseY<=280) {
+  	gameState = 1;
+	}
+  }
+  if (gameState==0) { //box for instructions
+	if (mouseX>=300 && mouseX<=500 && mouseY>300 &&mouseY<=360) {
+  	gameState=4;
+	}
+  }
+  if (gameState==4) { //instructions screen, box to go back
+	if (mouseX>=80 && mouseX<=260&& mouseY>45 &&mouseY<=105) {
+  	gameState=0;
+	}
+  }
+}
+
+
+
+
+
+
+
+
+
+</script>
+ <canvas id="processing-canvas"> </canvas>
+</body>
+</html>
