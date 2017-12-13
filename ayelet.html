@@ -17,19 +17,25 @@ int s = 5;// size of food
 int a = 720;//x coordinate of where eaten dots are placec
 int b =500;// y coordinate of where eaten dots are put
 int h = 15;// size of monster one//never use it again
-int l = 5;  // lives
+int l = 3;  // lives
 int gameState = 0;
 
 int mrad = 30;//width of monster one
 float xpos, ypos; //where my monster starts
-float mxpos, mypos;// the monster after dot 2
 float xspeed = 2.8;
 float yspeed = 2.8;
 int xdirection =1;//
 int ydirection = 1;//
 
-int one =40; 
-int yone = 80;
+int onerad=30;
+float mxpos, mypos ;
+float xonespeed = 3;
+float yonespeed = 3;
+int xonedirection = 1;
+int yonedirection = 1;
+
+int one =40; //x coordinate of dot 1
+int yone = 80;// y coordinate of dot 1
 int two = 160; 
 int ytwo = 20;
 int three =340; 
@@ -71,12 +77,6 @@ int ytwenty = 660;
 int twentyone = 840; 
 int ytwentyone = 660;
 
-int mone =40; 
-int ymone = 200;
-int mtwo =60; 
-int ymtwo= 200;
-
-
 void setup() {
   size(920, 680);
   noStroke();
@@ -85,6 +85,8 @@ void setup() {
 
   xpos= width/2;
   ypos = height/2;//starting point of monster one
+  mxpos = 100;
+  mypos = 200;
 }
 void draw() {
   if (l==0) {
@@ -94,23 +96,31 @@ void draw() {
   {
     background(0);
     textSize(50);
-    text("You are ugly and you lost, go die in a hole!!!", 10, 500);
+    text("You lost", 200, 200);
+    text(" try again!!!", 10, 500);
   }
 
   if (gameState==2) {
     background(0);
-    textSize(50);
-    text("You won!", 500, 500);
+    textSize(200);
+    fill(200, 0, 100);
+    text("You won!", 250, 300);
   }
   if (p==21) {
     gameState=2;
   }
 
   if (gameState==0) {
-    background(0);
-    textSize(50);
-    text("Play", 500, 500);
+    background(0, 250, 0);
+    fill(0, 100, 0);
+    textSize(200);
+    text("PACMAN!", 0, 200);
+    textSize(30);
+    text("Click To Play", 0, 300);
+    text("use arrow key to collect dots", 0, 400);
+    text("don't touch the monster!", 0, 500);
   }
+
   if (gameState==1) {
     background(0);
 
@@ -155,6 +165,47 @@ void draw() {
       x=40;
       y=40;
     }//does not let mounster touch pacman without losing life
+   
+     mxpos = mxpos + (xonespeed * xonedirection);
+ mypos = mypos  + (yonespeed * yonedirection);//id it out of boundries?
+ if(mxpos >width-onerad || mxpos<onerad){
+   xonedirection= xonedirection*-1;}
+   
+   if(mypos > height - onerad ||mypos<onerad){
+     yonedirection= yonedirection*-1;}
+     
+     
+     fill(100,150,250);
+     ellipse(mxpos,mypos,mrad,mrad);
+ fill(150,50,100);
+  ellipse(mxpos,mypos,h+21,h+21);
+ fill(0,0,0);
+  ellipse(mxpos,mypos-24,h-1.5,h-1.5);
+   ellipse(mxpos+15,mypos+21,h+3,h+3);
+  ellipse(mxpos-15,mypos+21,h+3,h+3);
+  ellipse(mxpos,mypos+42,h-5,h-5);
+ fill(150,0,100);
+ ellipse(mxpos, mypos, h, h);
+  fill(250,250,200);
+  ellipse(mxpos,mypos-3,h-7.5,h-7.5);
+  fill(200,0,0);
+  ellipse(mxpos,mypos-3,h-10,h-10);
+  fill(0,0,0);
+  ellipse(mxpos,mypos-2,h-12.5,h-12.5);
+stroke(7);
+  fill(250,70,0);
+ line(mxpos-6,mypos+9,mxpos+6,mypos+9);
+noStroke();
+fill(200,0,0);
+ triangle(mxpos-7,mypos+9,mxpos-3,mypos+9,mxpos-6,mypos+18);
+ triangle(mxpos+7,mypos+9,mxpos+3,mypos+9,mxpos+6,mypos+18);
+  noStroke();
+  
+  if(abs(x-mxpos)<30 && abs(y-mypos)<30){
+    l=l-1;
+    x=40;
+  y=40;} 
+
 
 
     fill(20, 120, 80);//score counter
@@ -167,12 +218,12 @@ void draw() {
 
 
 
-    fill(700, 0, 400);
-    ellipse(one, yone, s, s);
-    if (abs(x-one)<20 && abs(y-yone)<20) {    
-      one=a;
+    fill(700, 0, 400);//color of the dots
+    ellipse(one, yone, s, s);//shape if dot 2
+    if (abs(x-one)<20 && abs(y-yone)<20) {//if the p.c id touching the dot  
+      one=a;//make it go here (behind rectangle)
       yone=b;
-      p=p+1;
+      p=p+1;// you earn a point
     }//dot 1
 
     ellipse(two, ytwo, s, s);
@@ -338,9 +389,9 @@ void draw() {
     }// make the pacman not be able to leave maze
 
 
-    quad(0, 240, 40, 240, 40, 400, 0, 400);
-    if (x+15>0  &&x-15< 40 &&y+15>240  &&y-15<400  ) {
-      x=40;
+    quad(0, 240, 40, 240, 40, 400, 0, 400);//block of maze
+    if (x+15>0  &&x-15< 40 &&y+15>240  &&y-15<400  ) {//if pc is toucings it
+      x=40;//bring it back to original coordinate
       y=40;
     }
     quad(40, 240, 80, 240, 80, 280, 40, 280);
@@ -564,6 +615,11 @@ void keyPressed() {
 void mousePressed() {
   gameState=1;
 }
+
+
+
+
+
 
 
 
