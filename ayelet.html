@@ -96,13 +96,13 @@ void draw() {
   {
     background(0);
     textSize(50);
-    text("You lost", 200, 200);
-    text(" try again!!!", 10, 500);
+    text("Game over", 200, 200);
+    text("Click to try again!", 200, 500);
   }
 
   if (gameState==2) {
     background(0);
-    textSize(200);
+    textSize(100);
     fill(200, 0, 100);
     text("You won!", 250, 300);
   }
@@ -116,9 +116,9 @@ void draw() {
     textSize(200);
     text("PACMAN!", 0, 200);
     textSize(30);
-    text("Click To Play", 0, 300);
-    text("use arrow key to collect dots", 0, 400);
-    text("don't touch the monster!", 0, 500);
+    text("~Click Anywhere to Play", 0, 300);
+    text("~Use arrow key to collect dots.", 0, 400);
+    text("~Don't touch the monster!", 0, 500);
   }
 
   if (gameState==1) {
