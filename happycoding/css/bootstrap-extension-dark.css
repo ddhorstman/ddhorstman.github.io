@@ -1,0 +1,18 @@
+.container{
+	background-color: #060606;
+	box-shadow: 0 0 10px 10px #060606;
+}
+
+.navbar-default{
+	background-color: #111111;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+	color: white;
+	cursor: pointer;
+}
+
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus{
+	color: white;
+	cursor: pointer;
+}

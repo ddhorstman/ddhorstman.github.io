@@ -1,0 +1,9 @@
+name: Happy Coding
+markdown: kramdown
+future: true
+kramdown:
+  syntax_highlighter: rouge
+permalink: /:categories/:slug
+gems:
+  - jemoji
+  - jekyll-sitemap
