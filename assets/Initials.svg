@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    sodipodi:docname="Initials.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="D:\Users\david\Documents\GitHub\ddhorstman.github.io\favicon.png"
+   inkscape:export-xdpi="332.28"
+   inkscape:export-ydpi="332.28">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8"
-     inkscape:cx="225.03514"
+     inkscape:cx="194.72327"
      inkscape:cy="764.8284"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -72,7 +75,7 @@
        inkscape:export-xdpi="332.47885"
        inkscape:export-ydpi="332.47885" />
     <circle
-       style="opacity:1;vector-effect:none;fill:#c8c8ff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="path880"
        cx="60.505917"
        cy="92.01429"
@@ -86,7 +89,10 @@
        width="8.7377386"
        height="8.7377386"
        x="55.912071"
-       y="87.604591" />
+       y="87.604591"
+       inkscape:export-filename="D:\Users\david\Documents\GitHub\ddhorstman.github.io\favicon.png"
+       inkscape:export-xdpi="332.47885"
+       inkscape:export-ydpi="332.47885" />
     <path
        style="opacity:1;vector-effect:none;fill:#ff7bff;fill-opacity:0;stroke:#000000;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        d="m 56.31207,93.551906 0,-5.547318 h 1.587499 c 1.777063,0 2.634559,2.376248 2.607334,3.959818 -0.02706,1.573919 -0.607285,3.9003 -2.666374,3.9003 h -1.93437"
