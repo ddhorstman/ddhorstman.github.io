@@ -61,7 +61,7 @@
   }
   
   //click the mouse to start the ball at a new level or life, or reset game
-  void mousePressed() {
+  void mouseClicked() {
   if (start_countdown <=0){
     if (x == x_initial&&y==y_initial&&balls>=1) {        //launch ball if it's at starting position
       dx=base_speed*random(0.5,1.1);
