@@ -21,7 +21,7 @@
   int can_lose_lives = 1; //ability to lose lives. safe to change, cheater
   float x = 100;           //starting x-position, safe to change
   float x_initial = x;
-  float y= 400;           //starting y-position, important to change if resolution is changed dramatically.
+  float y= 1000;           //starting y-position, important to change if resolution is changed dramatically.
   float y_initial = y;
   float starting_speed = 5;    //starting speed, safe to change
   float base_speed = starting_speed;
@@ -42,7 +42,7 @@
   float[] y_corner = new float[nx*ny+1];
   int number_of_boxes = 0;
   int target_block = nx*ny;
-  int initialized = 0;
+  int initialized = 2;
   int start_countdown = 40;//checks how far your are through the settings menu
   //int collided_y = 0; int collided_x = 0; //old workaround for multi-collisions
   //int zeroth_box_broken = 0;    //workaround for zeroth box bug, but doesn't seem to work.
