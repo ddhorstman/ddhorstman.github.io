@@ -86,7 +86,7 @@ var simplemaps_usmap_mapdata={
       name: "Florida",
       color: "#FF8282",
       hover_color: "#FF8282",
-      description: "4,241,902 votes 'stolen'"
+      description: "4,241,902 voters unrepresented'"
     },
     NH: {
       name: "New Hampshire",
@@ -116,13 +116,13 @@ var simplemaps_usmap_mapdata={
       name: "New York",
       color: "#BCBCFF",
       hover_color: "#BCBCFF",
-      description: "1,659,099 votes 'stolen'"
+      description: "1,659,099 voters unrepresented"
     },
     PA: {
       name: "Pennsylvania",
       color: "#FF1010",
       hover_color: "#FF1010",
-      description: "10,755,288 votes 'stolen'"
+      description: "10,755,288 voters unrepresented"
     },
     NJ: {
       name: "New Jersey",
@@ -140,31 +140,31 @@ var simplemaps_usmap_mapdata={
       name: "Maryland",
       color: "#A1A1FF",
       hover_color: "#A1A1FF",
-      description: "2,865,726 votes 'stolen'"
+      description: "2,865,726 voters unrepresented"
     },
     VA: {
       name: "Virginia",
       color: "#FFAAAA",
       hover_color: "#FFAAAA",
-      description: "2,464,395 votes 'stolen'"
+      description: "2,464,395 voters unrepresented"
     },
     WV: {
       name: "West Virginia",
       color: "#FFA2A2",
       hover_color: "#FFA2A2",
-      description: "2,797,794 votes 'stolen'"
+      description: "2,797,794 voters unrepresented"
     },
     OH: {
       name: "Ohio",
       color: "#FF3030",
       hover_color: "#FF3030",
-      description: "7,861,585 votes 'stolen'"
+      description: "7,861,585 voters unrepresented"
     },
     IN: {
       name: "Indiana",
       color: "#FFB7B7",
       hover_color: "#FFB7B7",
-      description: "1,872,074 votes 'stolen'"
+      description: "1,872,074 voters unrepresented"
     },
     IL: {
       name: "Illinois",
@@ -176,7 +176,7 @@ var simplemaps_usmap_mapdata={
       name: "Connecticut",
       color: "#9797FF",
       hover_color: "#9797FF",
-      description: "3,310,799 votes 'stolen'"
+      description: "3,310,799 voters unrepresented"
     },
     WI: {
       name: "Wisconsin",
@@ -188,7 +188,7 @@ var simplemaps_usmap_mapdata={
       name: "North Carolina",
       color: "#FF2424",
       hover_color: "#FF2424",
-      description: "8,415,339 votes 'stolen'"
+      description: "8,415,339 voters unrepresented"
     },
     DC: {
       name: "District of Columbia",
@@ -200,61 +200,61 @@ var simplemaps_usmap_mapdata={
       name: "Massachusetts",
       color: "#3131FF",
       hover_color: "#3131FF",
-      description: "7,839,585 votes 'stolen'"
+      description: "7,839,585 voters unrepresented"
     },
     TN: {
       name: "Tennessee",
       color: "#FFC5C5",
       hover_color: "#FFC5C5",
-      description: "1,228,170 votes 'stolen'"
+      description: "1,228,170 voters unrepresented"
     },
     AR: {
       name: "Arkansas",
       color: "#FFBEBE",
       hover_color: "#FFBEBE",
-      description: "1,552,064 votes 'stolen'"
+      description: "1,552,064 voters unrepresented"
     },
     MO: {
       name: "Missouri",
       color: "#FFC8C8",
       hover_color: "#FFC8C8",
-      description: "1,096,586 votes 'stolen'"
+      description: "1,096,586 voters unrepresented"
     },
     GA: {
       name: "Georgia",
       color: "#FF7070",
       hover_color: "#FF7070",
-      description: "5,033,540 votes 'stolen'"
+      description: "5,033,540 voters unrepresented"
     },
     SC: {
       name: "South Carolina",
       color: "#FFA1A1",
       hover_color: "#FFA1A1",
-      description: "2,859,858 votes 'stolen'"
+      description: "2,859,858 voters unrepresented"
     },
     KY: {
       name: "Kentucky",
       color: "#FFCECE",
       hover_color: "#FFCECE",
-      description: "838,243 votes 'stolen'"
+      description: "838,243 voters unrepresented"
     },
     AL: {
       name: "Alabama",
       color: "#FFBEBE",
       hover_color: "#FFBEBE",
-      description: "1,537,976 votes 'stolen'"
+      description: "1,537,976 voters unrepresented"
     },
     LA: {
       name: "Louisiana",
       color: "#FFBFBF",
       hover_color: "#FFBFBF",
-      description: "1,495,337 votes 'stolen'"
+      description: "1,495,337 voters unrepresented"
     },
     MS: {
       name: "Mississippi",
       color: "#FFC1C1",
       hover_color: "#FFC1C1",
-      description: "1,421,046 votes 'stolen'"
+      description: "1,421,046 voters unrepresented"
     },
     IA: {
       name: "Iowa",
@@ -272,13 +272,13 @@ var simplemaps_usmap_mapdata={
       name: "Oklahoma",
       color: "#FFB7B7",
       hover_color: "#FFB7B7",
-      description: "1,855,664 votes 'stolen'"
+      description: "1,855,664 voters unrepresented"
     },
     TX: {
       name: "Texas",
       color: "#FF1010",
       hover_color: "#FF1010",
-      description: "22,184,633 votes 'stolen'"
+      description: "22,184,633 voters unrepresented"
     },
     NM: {
       name: "New Mexico",
@@ -290,13 +290,13 @@ var simplemaps_usmap_mapdata={
       name: "Kansas",
       color: "#FFBABA",
       hover_color: "#FFBABA",
-      description: "1,749,448 votes 'stolen'"
+      description: "1,749,448 voters unrepresented"
     },
     NE: {
       name: "Nebraska",
       color: "#FFD0D0",
       hover_color: "#FFD0D0",
-      description: "752,399 votes 'stolen'"
+      description: "752,399 voters unrepresented"
     },
     SD: {
       name: "South Dakota",
@@ -332,7 +332,7 @@ var simplemaps_usmap_mapdata={
       name: "Utah",
       color: "#FFB9B9",
       hover_color: "#FFB9B9",
-      description: "1,799,093 votes 'stolen'"
+      description: "1,799,093 voters unrepresented"
     },
     AZ: {
       name: "Arizona",
@@ -350,7 +350,7 @@ var simplemaps_usmap_mapdata={
       name: "Oregon",
       color: "#C5C5FF",
       hover_color: "#C5C5FF",
-      description: "1,236,146 votes 'stolen'"
+      description: "1,236,146 voters unrepresented"
     },
     WA: {
       name: "Washington",
@@ -362,13 +362,13 @@ var simplemaps_usmap_mapdata={
       name: "California",
       color: "#1010FF",
       hover_color: "#1010FF",
-      description: "14,549,880 votes 'stolen'"
+      description: "14,549,880 voters unrepresented"
     },
     MI: {
       name: "Michigan",
       color: "#FFA2A2",
       hover_color: "#FFA2A2",
-      description: "2,795,106 votes 'stolen'"
+      description: "2,795,106 voters unrepresented"
     },
     ID: {
       name: "Idaho",
