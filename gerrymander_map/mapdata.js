@@ -194,7 +194,7 @@ var simplemaps_usmap_mapdata={
       name: "District of Columbia",
       color: "#F5F5F5",
       hover_color: "#CCCCCC",
-      description: "Represented fairly"
+      description: "Not represented at all - LOL"
     },
     MA: {
       name: "Massachusetts",
